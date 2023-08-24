@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const getdate = require("./date.js");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
 
 app.set('view engine', "ejs");
 
@@ -12,13 +14,10 @@ var listitems = ["bring food", "cook food", "eat food"];
 var workitems = [];
 
 app.get("/", function (req, res) {
-    var date = new Date();//this givest the long format with gmt and all
-    var day = "";
 
-    var options = { weekday: 'long', month: 'long', day: 'numeric' };
-
-    day = date.toLocaleDateString("en-us", options);
-    // console.log(day);
+    var day = getdate.getDate();
+    
+    console.log(day);
 
     res.render("list", { listtitle: day, listitems: listitems });
     // console.log(listitems);
@@ -45,7 +44,11 @@ app.get("/work", function (req, res) {
 // app.post("/work", function (req, res) {
 //     workitems.push(req.body.item);
 //     res.redirect("/work");
-// })
+// })(this doesn't works cause when we enter input box  )
+
+app.get("/about", function (req,res) {
+    res.render("about");
+})
 
 app.listen(3000, function () {
     console.log("Server is working");

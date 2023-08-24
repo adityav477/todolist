@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("header") -%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolist</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
 
     <div class="box" id="heading">
         <h1>
@@ -31,11 +22,9 @@
 
                 <form class="item" action="/" method="post">
                     <input type="text" name="item" placeholder="New Item" autocomplete="off">
-                    <button type="submit" name="button" value=<%= listtitle %> >+</button>
+                    <button type="submit" name="button" value=<%=listtitle %> >+</button>
                 </form>
     </div>
 
 
-</body>
-
-</html>
+    <%- include("footer") -%>
